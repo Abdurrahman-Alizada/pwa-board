@@ -30,7 +30,7 @@
                     <div class="ml-6">
                         <h4 class="text-lg font-bold text-gray-700">253</h4>
                         <div class="text-xs text-gray-400">Files Reserved</div>
-                        <span class="bg-green-500 text-white rounded-full px-2 text-sm">+12</span>
+                        <span class="bg-green-500 text-white rounded px-1 text-sm">+12</span>
                     </div>
                 </div>
             </div>
