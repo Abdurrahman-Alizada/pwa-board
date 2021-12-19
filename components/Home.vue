@@ -127,7 +127,7 @@ export default {
     },
     selectedItem(index){
       this.selectedIndex = index;
-      this.isOpen = true;
+      this.drawer();
     },
     showdropdown(){
       this.dropdown = !this.dropdown
