@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-16">
+    <div class="mt-16 ">
         <div class="flex flex-col">
             <div class="w-full sm:w-2/3 xl:w-1/3">
                 <div class="flex items-center px-1 py-1 shadow-sm rounded-md bg-white">
@@ -34,7 +34,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
         
-  <nav class="flex fixed w-full items-center justify-between h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
+  <div class="flex fixed w-full items-center justify-between h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
 <!-- navbar -->
        <div   class="flex items-center justify-center">
         <button class="h-16 flex items-center justify-center w-16 border-r border-gray-400" aria-label="Open Menu" @click="drawer">
@@ -61,7 +61,7 @@
    <!-- dropdown -->
    
    <Dropdown v-if="dropdown" />
-  </nav>
+  </div>
 
 
 </template>
