@@ -1,12 +1,5 @@
 <template>
-         <transition
-      enter-active-class="transition ease-out duration-100"
-      enter-class="transform opacity-0 scale-95"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75"
-      leave-class="transform opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-95"
-    >
+    
         <div  class="right-0 top-0 absolute mt-16 w-56 rounded-md shadow-lg bg-gray-100 ring-1 ring-black ring-opacity-5 focus:outline-none">
         <div class="py-1" >
           <span class="flex items-center justify-start pl-4 ">
@@ -73,7 +66,6 @@
           
         </div>   
       </div>
-         </transition>
 </template>
 
 <script>

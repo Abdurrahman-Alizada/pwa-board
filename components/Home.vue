@@ -1,8 +1,8 @@
 <template>
         
-  <nav @focusout="handleFocusOut" tabindex="0" class="flex fixed w-full items-center justify-between h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
+  <nav class="flex fixed w-full items-center justify-between h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
 <!-- navbar -->
-       <div class="flex items-center justify-center">
+       <div   class="flex items-center justify-center">
         <button class="h-16 flex items-center justify-center w-16 border-r border-gray-400" aria-label="Open Menu" @click="drawer">
 
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,6 +23,27 @@
     </button>  
 <!-- end navbar -->
 <!-- sidebar -->
+      <transition
+      enter-class="opacity-0"
+      enter-active-class="ease-out transition-medium"
+      enter-to-class="opacity-100"
+      leave-class="opacity-100"
+      leave-active-class="ease-out transition-medium"
+      leave-to-class="opacity-0"
+    >
+      <div
+        @keydown.esc="isOpen = false"
+        v-show="isOpen"
+        class="z-10 fixed inset-0 transition-opacity"
+      >
+        <div
+          @click="isOpen = false"
+          class="absolute inset-0 opacity-50"
+          tabindex="0"
+        ></div>
+      </div>
+    </transition>
+    
     <aside class="transform top-0 left-0 w-16 mt-16 bg-gray-600 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30">
       <span v-for="(item, index) in items" :key="index" @click="selectedItem(index)" class="flex items-center justify-center p-4 text-white hover:bg-gray-700 hover:text-green-400 ">
         <span class="mr-2">
@@ -32,7 +53,7 @@
     </aside> 
 <!-- second sidebar -->
     <aside class="transform mt-16 ml-16 top-0 left-0 w-48 bg-gray-700 border-r border-gray-300 fixed h-full overflow-auto ease-in-out transition-all duration-700 z-0"  
-     :class="isOpen ? 'translate-x-0' : '-translate-x-full'" 
+      :class="isOpen ? 'translate-x-0' : '-translate-x-full'" 
      >
      <Sidebar :key="componentKey" :subItems="items[selectedIndex].subItems" />
     </aside>
@@ -93,7 +114,7 @@ export default {
           ]
         },
         ],
-         componentKey: 0,
+      componentKey: 0,
       isOpen: false,
       selectedIndex : 0,
       dropdown : false
@@ -102,25 +123,15 @@ export default {
   methods: {
     drawer() {
       this.isOpen = !this.isOpen;
-    },
-    clickOnIcon(){
-      this.isOpen = true;
+      console.log(this.isOpen)
     },
     selectedItem(index){
       this.selectedIndex = index;
-      console.log('in methods', index)
-      this.clickOnIcon()
+      this.isOpen = true;
     },
     showdropdown(){
       this.dropdown = !this.dropdown
     },
-
-    handleFocusOut(){
-     this.isOpen = false
-    }, 
-    handleFocusOutDrop(){
-     this.dropdown = false
-    }
   },
   watch: {
     isOpen: {
@@ -129,16 +140,14 @@ export default {
         if (process.client) {
           if (isOpen) document.body.style.setProperty("overflow", "hidden");
           else document.body.style.removeProperty("overflow");
-        }
+}
       }
     },
-
     selectedIndex: {
       immediate: true,
       handler(index) {
         if (process.client) {
          this.selectedIndex = index
-         console.log('in watch', index)
          this.componentKey += 1;
         }
       }
